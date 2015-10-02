@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link href="/static/typeahead.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <title>app | complete</title>
+</head>
+<body>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <br/><br/>
+        {% if not routes %}
+            <center><h3>No bus routes found!</h3></center>
+        {% endif %}
+        {% for route in routes %}
+            <div class="panel panel-default">
+            <div class="panel-heading">Route {{forloop.counter}}</div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th><small>Hop #</small></th>
+                        <th><small>From</small></th>
+                        <th><small>To</small></th>
+                        <th><small>Bus No.   </small></th>
+                        <th><small>Distance (Approx.)</small></th>
+                        <th><small>Duration (Approx.)</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for hop in route %}
+                    <tr>
+                        <td><small>{{ hop.Hop }}</small></td>
+                        <td><small>{{ hop.From }}</small></td>
+                        <td><small>{{ hop.To }}</small></td>
+                        <td><small>{{ hop.bus_nos }}</small></td>
+                        <td><small>{% if hop.distance %}{{ hop.distance }}{%else%}-{%endif%}</small></td>
+                        <td><small>{% if hop.duration %}{{ hop.duration }}{%else%}-{%endif%}</small></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col-md-2"></div>
+</div>
+<center><h3>bbus.in <small> BMTC Bus Route Search</small></h3></center>
+</body>
+
+</html>
