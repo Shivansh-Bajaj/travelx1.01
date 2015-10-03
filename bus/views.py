@@ -9,7 +9,7 @@ from lxml import html
 from BeautifulSoup import BeautifulSoup
 from busutil import *
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'busindex.html')
 def search(request):
     if request.method != 'POST':
         return HttpResponseRedirect('/')
@@ -26,4 +26,4 @@ def search(request):
     for table in tables:
         routes += 1
         bus_routes.append(table2json(table.findAll('tr')))
-    return render(request, 'search.html', {'routes':bus_routes})
+    return render(request, 'bussearch.html', {'routes':bus_routes})

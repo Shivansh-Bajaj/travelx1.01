@@ -1,167 +1,48 @@
-<html>
-
-<head>
+<!DOCTYPE html>
+{%load staticfiles%}
+<html lang="en">
+  <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link href="/static/signin.css" rel="stylesheet">
     <link href="/static/typeahead.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link href="/static/stick-footer.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/travelx.ico" type="image/x-icon" />
     <script src="/static/jquery-2.1.0.min.js"></script>
     <script src="/static/bootstrap.min.js"></script>
     <script src="/static/typeahead.bundle.min.js"></script>
-    <title>bbus.in | BMTC Bus Route Search</title>
-    <meta property="og:title" content="bbus.in - BMTC Bus Route Search" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.bbus.in/" />
-    <meta property="og:image" content="http://bangalorereporter.com/wp-content/uploads/2013/07/0311.jpg" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:width" content="400" />
-    <meta property="og:image:height" content="400" />
-    <meta property="fb:app_id" content="534027093377555" />
-</head>
 
-<body>
+    <title>Travelx</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
     <div class="container">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-6">
-            <form method="POST" id="js-search-form" action="/search">{% csrf_token %}
-                <div class="form-group">
-                    <label for="from">From</label>
-                    <div class="js-from">
-                        <label class="control-label" style="display:none;" id="js-src-err">Where do you want to start from?</label>
-                        <input type="text" class="typeahead form-control" id="js-src" name="from" placeholder="Start from bus stop .." required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="to">To</label>
-                    <div class="js-to">
-                        <label class="control-label" style="display:none;" id="js-dst-err">Where do you want to reach?</label>
-                        <input type="text" class="typeahead form-control" id="js-dst" name="to" placeholder="Reach to bus stop .." required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="to">How do you want to travel?</label>
-                    <div class="js-to">
-                        <select name='how' class="form-control">
-                            <option>Minimum Number of Hops</option>
-                            <option>Maximum Bus Route Availability</option>
-                            <option>Via Terminal Bus Stations Only</option>
-                            <option>Direct Routes Only</option>
-                            <option>Shortest Distance</option>
-                        </select>
-                    </div>
-                </div>
-                <br/>
-                <br/>
-                <center>
-                    <button type="submit" data-loading-text="Searching ..." id="js-submit-btn" class="btn btn-primary btn-lg">Search</button>
-                </center>
-            </form>
-
-            <center>
-                <h3>
-                    <small></small>
-                </h3>
-                <br/>
-                <br/>
-                <small>
-                </small>
-                <br/>
-                <br/>
-                <br/>
-                <small>                    <br/><a href="http://www.narasimhadatta.info/bmtc_query.html" target="_blank">http://www.narasimhadatta.info/bmtc_query.html </a>
-                    <br/>Thanks to Narasimha Datta.</small>
-            </center>
-        </div>
+          <div class="page-header">
+            <h1>Sticky footer</h1>
           </div>
-    <br/>
+          <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
+          <p>Use <a href="../sticky-footer-navbar">the sticky footer with a fixed navbar</a> if need be, too.</p>
+      </div>
+      {% block footer %}
+        <footer class="footer">
+          <div class="col-md-2"><img src="/static/travelx.png"/><div>
+        </footer>
+        {% endblock %}
 
-</body>
-<script type="text/javascript">
-$(document).ready(function() {
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=534027093377555";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    (function() {
-        var po = document.createElement('script');
-        po.type = 'text/javascript';
-        po.async = true;
-        po.src = 'https://apis.google.com/js/platform.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(po, s);
-    })();
-
-    var bus_stops = new Bloodhound({
-        datumTokenizer: function(d) {
-            return Bloodhound.tokenizers.whitespace(d.name);
-        },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        limit: 8,
-        prefetch: {
-            url: '/static/bus_list.json',
-            filter: function(list) {
-                return $.map(list, function(bus_stop) {
-                    return {
-                        name: bus_stop
-                    };
-                });
-            }
-        }
-    });
-
-    bus_stops.initialize();
-
-    $('.js-to .typeahead').typeahead({
-        highlight: true,
-    }, {
-        name: 'bus_stops',
-        displayKey: 'name',
-        source: bus_stops.ttAdapter()
-    });
-
-    $('.js-from .typeahead').typeahead({
-        highlight: true,
-    }, {
-        name: 'bus_stops',
-        displayKey: 'name',
-        source: bus_stops.ttAdapter(),
-    });
-
-    $('#js-submit-btn').on('click', function(event) {
-        event.preventDefault();
-        $('#js-src-err').hide();
-        $('#js-dst-err').hide();
-        $('#js-src').parent().removeClass('has-error');
-        $('#js-dst').parent().removeClass('has-error');
-        var $btn = $(this);
-        $btn.button('loading');
-        var $src = $('#js-src');
-        var $dst = $('#js-dst');
-        if (!$src.val()) {
-            $('#js-src').parent().addClass('has-error');
-            $('#js-src-err').show();
-            $btn.button('reset');
-            return;
-        }
-        if (!$dst.val()) {
-            $('#js-dst').parent().addClass('has-error');
-            $('#js-dst-err').show();
-            $btn.button('reset');
-            return;
-        }
-        var form = $('#js-search-form');
-        form.submit();
-    });
-});
-</script>
-{% include "ga_track.html" %}
-
+        <!-- Bootstrap core JavaScript
+   ================================================== -->
+   <!-- Placed at the end of the document so the pages load faster -->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   <script src="/static/bootstrap.min.js"></script>
+   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+   <script src="/static/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

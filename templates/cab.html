@@ -5,18 +5,29 @@
     <link rel="stylesheet" href="/static/bootstrap.min.css">
     <link href="/static/typeahead.css" rel="stylesheet">
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
-    <title>app | complete</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link href="/static/typeahead.css" rel="stylesheet">
+    <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <title>TRavelx|cab</title>
+<!-- Optional theme -->
+    <title>Travelx|cab</title>
 </head>
 <body>
 <div class="col-md-4">
   <br /><br />
-  <div class="panel panel-default">
+  <div class="container clearfix">
   <div class='col-md-2'></div>
   <div class="col-md-8">
-    <div class="panel-heading">price with cab:</div>
-    <div>
-        <div><h1>{{name}}</h1>
-        <p>high_estimate:{{high_estimate}}</br>low_estimate:{{low_estimate}}</br>duration:{{duration}}</br>distance:{{distance}}</br></p></div>
+    <div >
+      {% for i in data %}
+        <div class="panel panel-default">
+          <div class="text-center panel-heading"><h1>Price Range:{{i.high_estimate}}-{{i.low_estimate}}</h1></div>
+        <div class="panel-body"><p>
+          Cab Type:{{i.localized_display_name}}</br>Time:{{i.duration}}min</br>distance:{{i.distance}}Km</br></p></div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </div>

@@ -17,10 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from bus import views
 from cab import view
+from view import main
 urlpatterns = [
-    #url(r'^bus/'),include('bus.url'),
-    url(r'^bus$',views.index,name='index'),
-    url(r'^search$',views.search,name='search'),
+    url(r'^$',main,name='main'),
+    #url(r'^/'),include('bus.url'),
+    url(r'^bus$',views.index,name='busindex'),
+    url(r'^search$',views.search,name='busearch'),
     url(r'^cab$',view.index,name='cabindex'),
     url(r'^cabsearch$',view.cab,name='cabsearch')
 ]

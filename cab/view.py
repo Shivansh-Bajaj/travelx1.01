@@ -42,20 +42,7 @@ def cab(request):
     }
     response = requests.get(url, params=parameters)
     data = response.json()
-    name=[]
-    distance=[]
-    high_estimate=[]
-    low_estimate=[]
-    duration=[]
-    j=0
-    for i in data['prices']:
-        name.append(i['localized_display_name'])
-        distance.append(i['distance'])
-        high_estimate.append(i['high_estimate'])
-        low_estimate.append(i['high_estimate'])
-        duration.append((i['duration'])/60)
-        j=j+1
-    return render(request,'cab.html',{'count':j,'name':name,'distance':distance,'high_estimate':high_estimate,'low_estimate':low_estimate,'duration':duration})
+    return render(request,'cab.html',{'data':data['prices']})
 def get_coordinates(query, from_sensor=False):
     query = query.encode('utf-8')
     url = 'https://api.uber.com/v1/estimates/price'
