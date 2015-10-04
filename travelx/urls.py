@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^$',main,name='main'),
     #url(r'^/'),include('bus.url'),
     url(r'^bus$',views.index,name='busindex'),
-    url(r'^search$',views.search,name='busearch'),
+    url(r'^bussearch$',views.search,name='busearch'),
     url(r'^cab$',view.index,name='cabindex'),
     url(r'^cabsearch$',view.cab,name='cabsearch')
 ]

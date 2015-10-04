@@ -56,7 +56,6 @@ def get_coordinates(query, from_sensor=False):
     if response['results']:
         location = response['results'][0]['geometry']['location']
         latitude, longitude = location['lat'], location['lng']
-        print query, latitude, longitude
     else:
         latitude, longitude = None, None
         print query, "<no results>"

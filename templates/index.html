@@ -1,48 +1,40 @@
 <!DOCTYPE html>
-{%load staticfiles%}
-<html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-    <link href="/static/signin.css" rel="stylesheet">
-    <link href="/static/typeahead.css" rel="stylesheet">
-    <link href="/static/stick-footer.css" rel="stylesheet">
-    <link rel="shortcut icon" href="/static/travelx.ico" type="image/x-icon" />
-    <script src="/static/jquery-2.1.0.min.js"></script>
-    <script src="/static/bootstrap.min.js"></script>
-    <script src="/static/typeahead.bundle.min.js"></script>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TravelX</title>
+		<meta name="keywords" content="background slideshow, boxes, background image, four panels, css, tutorial" />
+		<link rel="shortcut icon" href="/static/favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:200,400,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/static/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/static/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/static/component.css" />
+		<script src="/static/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Top Navigation -->
 
-    <title>Travelx</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  </head>
-
-  <body>
-    <div class="container">
-          <div class="page-header">
-            <h1>Sticky footer</h1>
-          </div>
-          <p class="lead">Pin a fixed-height footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
-          <p>Use <a href="../sticky-footer-navbar">the sticky footer with a fixed navbar</a> if need be, too.</p>
-      </div>
-      {% block footer %}
-        <footer class="footer">
-          <div class="col-md-2"><img src="/static/travelx.png"/><div>
-        </footer>
-        {% endblock %}
-
-        <!-- Bootstrap core JavaScript
-   ================================================== -->
-   <!-- Placed at the end of the document so the pages load faster -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script src="/static/bootstrap.min.js"></script>
-   <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-   <script src="/static/ie10-viewport-bug-workaround.js"></script>
-  </body>
+			<div id="boxgallery" class="boxgallery" data-effect="effect-1">
+				<div class="panel"><img src="/static/taxi.jpg" alt="Image 1"/></div>
+				<div class="panel"><img src="/static/maxresdefault.jpg" alt="Image 2"/></div>
+				<div class="panel"><img src="/static/1.jpg" alt="Image 3"/></div>
+				<div class="panel"><img src="/static/2.png" alt="Image 4"/></div>
+			</div>
+			<header class="codrops-header">
+				<h1>Travel X <span>Promoting the public transport by managing your travel<br/><b>Travel via Bus or Cab</b></span></h1>
+				<nav class="codrops-demos">
+					<a href="/bus">BUS</a>
+					<a href="/cab">CAB</a>
+				</nav>
+			</header>
+		</div><!-- /container -->
+		<script src="/static/classie.js"></script>
+		<script src="/static/boxesFx.js"></script>
+		<script>
+			new BoxesFx( document.getElementById( 'boxgallery' ) );
+		</script>
+	</body>
 </html>
