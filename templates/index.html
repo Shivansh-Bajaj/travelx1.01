@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>TravelX</title>
+		<meta name="keywords" content="background slideshow, boxes, background image, four panels, css, tutorial" />
+		<link rel="shortcut icon" href="/static/favicon.ico">
+		<link href='http://fonts.googleapis.com/css?family=Raleway:200,400,600' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="/static/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="/static/demo.css" />
+		<link rel="stylesheet" type="text/css" href="/static/component.css" />
+		<script src="/static/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<!-- Top Navigation -->
+
+			<div id="boxgallery" class="boxgallery" data-effect="effect-1">
+				<div class="panel"><img src="/static/taxi.jpg" alt="Image 1"/></div>
+				<div class="panel"><img src="/static/maxresdefault.jpg" alt="Image 2"/></div>
+				<div class="panel"><img src="/static/1.jpg" alt="Image 3"/></div>
+				<div class="panel"><img src="/static/2.png" alt="Image 4"/></div>
+			</div>
+			<header class="codrops-header">
+				<h1>Travel X <span>Promoting the public transport by managing your travel<br/><b>Travel via Bus or Cab</b></span></h1>
+				<nav class="codrops-demos">
+					<a href="/bus">BUS</a>
+					<a href="/cab">CAB</a>
+				</nav>
+			</header>
+		</div><!-- /container -->
+		<script src="/static/classie.js"></script>
+		<script src="/static/boxesFx.js"></script>
+		<script>
+			new BoxesFx( document.getElementById( 'boxgallery' ) );
+		</script>
+	</body>
+</html>
